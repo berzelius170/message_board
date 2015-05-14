@@ -1,0 +1,13 @@
+<div>welcome</div>
+<div>login</div>
+<div>
+  <% if @error_message != nil %>
+    <%= @error_message %>
+  <% end %>
+</div>
+<form method="post" action="/login">
+  <input type="text" name="username" value="username">
+  <input type="text" name="password" value="password">
+  <input type="submit">
+</form>
+<div>create a new account <a href="/new_user">here</a></div>

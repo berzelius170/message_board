@@ -1,0 +1,15 @@
+
+<div class="post_title"><%= @post.title %></div>
+<div><%= @post.body %></div>
+<br>
+<table>
+<% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.text %></td>
+    </tr>
+<% end %>
+</table>
+<form id="new_comment" method="post" action="/<%= @post.id %>/new_comment">
+  <input type="text" name="text" value="comment"><br>
+  <input type="submit" value="Create">
+</form>

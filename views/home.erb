@@ -1,0 +1,41 @@
+
+<div>Welcome <%= @user.name %> </div>
+<div><button id="new_thread_button">Create a thread</button></div>
+<form id="new_thread" method="post" action="/<%= @user.id %>/new_thread">
+  <input type="text" name="topic" value="thread"><br>
+  <input type="submit" value="Create">
+</form>
+
+<table>
+  <tr>
+    <th>Thread</th>
+    <th>Number of posts</th>
+  </tr>
+  <% @threads.each do |thread| %>
+  <tr>
+    <td><a href="/<%=thread.id%>/thread"><%= thread.title %></a></td>
+    <td>
+      <%= thread.contents.length %>
+    </td>
+    <td></td>
+  </tr>
+  <% end %>
+</table>
+<br>
+<div>Your content</div>
+<table>
+  <tr>
+    <th>Threads</th>
+    <th>Posts</th>
+  </tr>
+  <tr>
+    <% @user_threads = @user.discussions %>
+    <% @user_threads.each do |thread| %>
+        <td><a href="/<%=thread.id%>/thread"><%= thread.title %></a></td>
+    <% end %>
+    <% @user_posts = @user.contents %>
+    <% @user_posts.each do |content| %>
+        <td><a href="/<%=content.id%>/thread"><%= content.title %></a></td>
+    <% end %>
+  </tr>
+</table>

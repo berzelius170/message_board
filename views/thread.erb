@@ -1,0 +1,22 @@
+
+<div class="thread_title"><%= @thread.title %></div>
+<div><button id="new_post_button">Create a post</button></div>
+<form id="new_post" method="post" action="/<%= @thread.id %>/new_post">
+  <input type="text" name="title" value="title"><br>
+  <input type="text" name="body" value="body"><br>
+  <input type="submit" value="Create">
+</form>
+<table>
+  <tr>
+    <th>Post name</th>
+    <th>Number of comments</th>
+    <th>Time posted</th>
+  </tr>
+  <% @posts.each do |post| %>
+      <tr>
+        <td><a href="/<%=post.id%>/post"><%=post.title%></a></td>
+        <td><%= post.comments.length%></td>
+        <td></td>
+      </tr>
+  <% end %>
+</table>
